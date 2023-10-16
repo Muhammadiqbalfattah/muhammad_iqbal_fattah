@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Tentang Kami </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      #resume {
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+    <body>
+      <!-- Membuat Navbar -->
+      <div id="navbar">
+        <a href="http://localhost/pemograman_web/UTS_Muhammad_Iqbal_Fattah_dua/index.html"> Beranda</a>
+        <a href="http://localhost/pemograman_web/UTS_Muhammad_Iqbal_Fattah_dua/tentang-kami.html"> Tentang Kami</a>
+        <a href="http://localhost/pemograman_web/UTS_Muhammad_Iqbal_Fattah_dua/layanan.html"> Layanan </a>
+        <a href="http://localhost/pemograman_web/UTS_Muhammad_Iqbal_Fattah_dua/resume.html"> Resume</a>
+        <a href="http://localhost/pemograman_web/UTS_Muhammad_Iqbal_Fattah_dua/kontak.html"> Kontak</a>
+      </div>
+      <div class="container" id="resume">
+        <div class="row">
+          <div class="col-sm-12 text-center" id="resume-info">
+            <img id="profile-image" class="rounded-circle" alt="" width="150px" height="150px">
+            <h3 id="nama-lengkap"></h3>
+          </div>
+          <div class="col-sm-4">
+            <h4> Deskripsi Diri </h4>
+            <p id="deskripsi-diri"> <!-- Informasi data akan disini --> </p>
+          </div>
+          <div class="col-sm-4">
+            <h4> Pengalaman Kerja </h4>
+            <p id="pengalaman-kerja"> <!-- Informasi data akan disini --> </p>
+          </div>
+          <div class="col-sm-4">
+            <h4> Pendidikan Formal </h4>
+            <p id="pendidikan-formal"><!-- Informasi data akan disini --> </p>
+          </div>
+        </div>
+      </div>
+      <footer style="background-color: #8A9480; color: #FFFFFF;" class="py-4">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <p>&copy; 2023 Muhammad Iqbal Fattah</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+      <script src="script.js"></script>
+      <script>
+        //resume 100%
+           fetch('api.php')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        var resumeData = data.resume[0]; // Menggunakan data pertama dari array jika ada
+        document.getElementById('profile-image').src = resumeData.gambar_profile;
+        document.getElementById('nama-lengkap').textContent = resumeData.nama_lengkap;
+        document.getElementById('deskripsi-diri').textContent = resumeData.deskripsi_diri;
+        document.getElementById('pengalaman-kerja').textContent = resumeData.pengalaman_kerja;
+        document.getElementById('pendidikan-formal').textContent = resumeData.pendidikan_formal;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+      </script>
+  </body>
+</html>
