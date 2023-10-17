@@ -18,7 +18,7 @@ if ($conn) {
     $response['tentang_kami_error'] = "Error executing SQL query: " . mysqli_error($conn);
   }
 
-  mysqli_close($conn); // Tutup koneksi database (tambahkan titik koma di sini)
+  mysqli_close($conn);
 }
 
 
