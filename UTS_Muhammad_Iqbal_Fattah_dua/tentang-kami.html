@@ -39,19 +39,14 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
       <script src="script.js"></script>
       <script>
-        // Fungsi untuk mengambil data dari API
         function fetchData() {
           fetch('api.php')
             .then(response => response.json())
             .then(data => {
-              // Mengambil elemen HTML yang akan diisi dengan data
               const container = document.getElementById('tentangkami');
-
-              // Mengambil data dari API
               const deskripsi = data.tentang_kami[0].deskripsi;
               const gambarPath = data.tentang_kami[0].daftar_gambar;
 
-              // Mengisi elemen HTML dengan data dari API
               const html = `
                 <div class="row">
                   <div class="col-sm-12 text-center">
@@ -67,8 +62,6 @@
               console.error('Error fetching data:', error);
             });
         }
-
-        // Memanggil fungsi fetchData untuk mengisi data
         fetchData();
       </script>
   </body>
