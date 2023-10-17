@@ -62,7 +62,7 @@
         return response.json();
       })
       .then(function(data) {
-        var resumeData = data.resume[0]; // Menggunakan data pertama dari array jika ada
+        var resumeData = data.resume[0];
         document.getElementById('profile-image').src = resumeData.gambar_profile;
         document.getElementById('nama-lengkap').textContent = resumeData.nama_lengkap;
         document.getElementById('deskripsi-diri').textContent = resumeData.deskripsi_diri;
